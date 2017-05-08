@@ -3,10 +3,10 @@
 <ol>
 <li> Check vm.swappiness on all your nodes  
 <code>
-# sysctl vm.swappiness  
-vm.swappiness = 60  
-# sysctl vm.swappiness=1  
-vm.swappiness = 1
+# sysctl vm.swappiness    
+vm.swappiness = 60    
+# sysctl vm.swappiness=1      
+vm.swappiness = 1    
 </code>
 </li>
 
