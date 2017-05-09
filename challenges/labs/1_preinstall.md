@@ -1,22 +1,19 @@
-<h1>Challenge 1</h1>
+<h1>Preinstall</h1>
 
 <ol>
-<li> Check vm.swappiness on all your nodes  
-<code># sysctl vm.swappiness</code>  <br/>
+<li> Check vm.swappiness on all your nodes  <br/>
+Command: <code># sysctl vm.swappiness</code>  <br/>
 vm.swappiness = 60  <br/>
 <code># sysctl vm.swappiness=1  </code>  <br/>
 vm.swappiness = 1 
 </li>
 
+<br/>
 
 <li>
 Show the mount attributes of your volume(s) <br/>
-<code>
-# cat /proc/mounts  
-</code>
-<p>
-Result: /dev/xvde / ext4
-</p>
+Command: <code># cat /proc/mounts</code>
+<p>Result: /dev/xvde / ext4</p>
 <pre>
 rootfs / rootfs rw 0 0  
 proc /proc proc rw,relatime 0 0  
@@ -32,11 +29,12 @@ none /proc/sys/fs/binfmt_misc binfmt_misc rw,relatime 0 0
 </pre>
 </li>
 
+<br/>
+
 <li>
 list the reserve space setting <br/>
-<code>
-# tune2fs -l /dev/xvde
-</code>
+Command: <code># tune2fs -l /dev/xvde</code>
+<code># resize2fs /dev/xvde </code>
 <p>
 Result:  Reserved block count:     104857
 </p>
@@ -88,6 +86,8 @@ Journal backup:           inode blocks
 </pre>
 </li>
 
+<br/>
+
 <li>
 Disable transparent hugepage support <br/>
 <code>
@@ -103,6 +103,8 @@ thp_collapse_alloc_failed 0
 thp_split 0
 </pre>
 </li>
+
+<br/>
 
 <li>
 List your network interface configuration <br/>
@@ -131,12 +133,11 @@ lo        Link encap:Local Loopback
 
 </li>
 
+<br/>
 
 <li>
 forward and reverse host lookups are correctly resolved <br/>
-<code>
-nslookup
-</code><br/>
+Command: <code># nslookup</code><br/>
 <p>Result: </p>
 <pre>
 > ec2-54-219-134-223.us-west-1.compute.amazonaws.com
@@ -177,6 +178,7 @@ Address: 172.31.7.124
 </pre>
 </li>
 
+<br/>
 
 <li>
 Show the nscd service is running <br/>
@@ -186,12 +188,37 @@ Show the nscd service is running <br/>
 nscd (pid 4516) is running...
 </li>
 
+<br/>
+
 <li>
 Show the ntpd service is running <br/>
-<code>
+<code> 
 # service ntpd status
-</code><br/>
+</code>
+<br/>
 ntpd (pid  4593) is running...
 </li>
 
+<li>
+Commands Notes: Initialize the server
+<ul>
+<li><code>sysctl vm.swappiness=1</code></li>
+<li><code>resize2fs /dev/xvde</code></li>
+<li>Network: <code>setenforce 0</code></li>
+<li><code>service iptables stop</code></li>
+<li>Nscd: <code>yum install nscd</code></li>
+<li><code>service nscd start</code></li>
+<li>Ntpd: <code>yum install ntp</code></li>
+<li><code>service ntpd start</code></li>
+<li>MySQL Connector:<code>mkdir -p /usr/share/java</code></li>
+<li><code>cd /usr/share/java</code></li>
+<li><code>ln -s mysql-connector-java-5.1.42-bin.jar mysql-connector-java.jar</code></li>
+
+</li>
+
 </ol>
+
+
+
+
+
