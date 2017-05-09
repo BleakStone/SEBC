@@ -1,4 +1,4 @@
-<center><h2>B. Part 2</h2></center> 
+<h1>MySQL replica</h1>
 <ol>
 <li>Download and implement the official MySQL repo <br/>
 <p>Choose mysql55 in mysql-community.repo</p>
@@ -8,8 +8,9 @@
 # vi /etc/yum.repos.d/mysql-community.repo 
 # yum install mysql
 # yum install mysql-server
-</li>
 </pre>
+</li>
+
 
 <li> SHOW MASTER STATUS <br/>
 <code>mysql> SHOW MASTER STATUS; </code> <br/>

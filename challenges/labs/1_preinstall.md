@@ -92,7 +92,7 @@ Journal backup:           inode blocks
 Disable transparent hugepage support <br/>
 <code>
 # egrep 'trans|thp' /proc/vmstat
-<code> <br/>
+</code> <br/>
 <p>Result: It has been disabled</p>
 <pre>
 nr_anon_transparent_hugepages 0
